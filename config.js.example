@@ -1,6 +1,6 @@
 module.exports = {
-  ropsten: {
-    rpcOrigin: 'https://ropsten.infura.io',
+  nebula: {
+    rpcOrigin: "https://testnet.rpc.novanetwork.io:9070/",
     privateKey: '0xefg1234....',
   },
 }
