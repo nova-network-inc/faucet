@@ -1,6 +1,6 @@
-const h = require('h');
-const fetch = require('cross-fetch');
-const EthQuery = require('eth-query');
+const h = require("h");
+const fetch = require("cross-fetch");
+const EthQuery = require("eth-query");
 
 var state = {
   isLoading: true,
@@ -16,7 +16,7 @@ var state = {
   transactions: [],
 };
 
-window.addEventListener('load', startApp);
+window.addEventListener("load", startApp);
 
 function startApp() {
   // attempt to get provider from environment
@@ -32,8 +32,8 @@ function startApp() {
     // abort
     render(
       h(
-        'span',
-        'No ethereum provider detected. Install a web-enabled wallet (eg MetaMask metamask.io) to continue'
+        "span",
+        "No ethereum provider detected. Install a web-enabled wallet (eg MetaMask metamask.io) to continue"
       )
     );
     return;
@@ -57,7 +57,7 @@ function updateStateFromNetwork() {
 
 function getNetwork() {
   global.provider.sendAsync(
-    { id: 1, jsonrpc: '2.0', method: 'net_version' },
+    { id: 1, jsonrpc: "2.0", method: "net_version" },
     function (err, res) {
       if (err) return console.error(err);
       if (res.error) return console.res.error(res.error);
@@ -87,14 +87,14 @@ function getAccounts() {
  */
 async function requestAccounts() {
   const provider = global.provider;
-  if ('enable' in provider) {
+  if ("enable" in provider) {
     try {
       const accounts = await provider.enable();
       getAccounts();
       return accounts[0];
     } catch (err) {
       window.alert(
-        'Your web3 account is currently locked. Please unlock it to continue.'
+        "Your web3 account is currently locked. Please unlock it to continue."
       );
     }
   } else {
@@ -103,9 +103,9 @@ async function requestAccounts() {
       return state.userAddress;
     } else {
       window.alert(
-        'Your web3 account is currently locked. Please unlock it to continue.'
+        "Your web3 account is currently locked. Please unlock it to continue."
       );
-      throw new Error('web3 account locked');
+      throw new Error("web3 account locked");
     }
   }
 }
@@ -134,13 +134,13 @@ function renderApp() {
   // }
 
   // render wrong network warning
-  if (state.network !== '107') {
+  if (state.network !== "87") {
     return render([
-      h('section.container', [
-        h('div.panel.panel-default', [
-          h('div.panel-heading', [h('h3', 'Network Error')]),
-          h('div.panel-body', [
-            'You are currently connected to the wrong network. Please switch over to Nebula Testnet',
+      h("section.container", [
+        h("div.panel.panel-default", [
+          h("div.panel-heading", [h("h3", "Network Error")]),
+          h("div.panel-body", [
+            "You are currently connected to the wrong network. Please switch over to Nova mainnet",
           ]),
         ]),
       ]),
@@ -149,19 +149,19 @@ function renderApp() {
 
   // render faucet ui
   render([
-    h('nav.navbar.navbar-default.text-center', [
-      h('h1.container-fluid', 'Nova Network NBX Faucet'),
+    h("nav.navbar.navbar-default.text-center", [
+      h("h1.container-fluid", "Nova Network SNT Faucet"),
     ]),
 
-    h('section.container', [
-      h('div.panel.panel-default', [
-        h('div.panel-heading', [h('h3', 'Faucet')]),
-        h('div.panel-body', [
-          h('div', 'Faucet Wallet: ' + state.faucetAddress),
-          h('div', 'Available Balance: ' + formatBalance(state.faucetBalance)),
-          h('button.btn.btn-success', 'Request 0.1 NBX', {
+    h("section.container", [
+      h("div.panel.panel-default", [
+        h("div.panel-heading", [h("h3", "Faucet")]),
+        h("div.panel-body", [
+          h("div", "Faucet Wallet: " + state.faucetAddress),
+          h("div", "Available Balance: " + formatBalance(state.faucetBalance)),
+          h("button.btn.btn-success", "Request 0.1 SNT", {
             style: {
-              margin: '4px',
+              margin: "4px",
             },
             // disabled: state.userAddress ? null : true,
             click: getEther,
@@ -169,29 +169,29 @@ function renderApp() {
         ]),
       ]),
 
-      h('div.panel.panel-default', [
-        h('div.panel-heading', [h('h3', 'Your Wallet')]),
-        h('div.panel-body', [
-          h('div', 'Your Address: ' + state.userAddress),
-          h('div', 'Your Balance: ' + formatBalance(state.fromBalance)),
-          h('div', 'Make a Donation:'),
-          h('button.btn.btn-warning', '1 NBX', {
+      h("div.panel.panel-default", [
+        h("div.panel-heading", [h("h3", "Your Wallet")]),
+        h("div.panel-body", [
+          h("div", "Your Address: " + state.userAddress),
+          h("div", "Your Balance: " + formatBalance(state.fromBalance)),
+          h("div", "Make a Donation:"),
+          h("button.btn.btn-warning", "1 SNT", {
             style: {
-              margin: '4px',
+              margin: "4px",
             },
             // disabled: state.userAddress ? null : true,
             click: sendTx.bind(null, 1),
           }),
-          h('button.btn.btn-warning', '10 NBX', {
+          h("button.btn.btn-warning", "10 SNT", {
             style: {
-              margin: '4px',
+              margin: "4px",
             },
             // disabled: state.userAddress ? null : true,
             click: sendTx.bind(null, 10),
           }),
-          h('button.btn.btn-warning', '100 NBX', {
+          h("button.btn.btn-warning", "100 SNT", {
             style: {
-              margin: '4px',
+              margin: "4px",
             },
             // disabled: state.userAddress ? null : true,
             click: sendTx.bind(null, 100),
@@ -199,14 +199,14 @@ function renderApp() {
         ]),
       ]),
 
-      h('div.panel.panel-default', [
-        h('div.panel-heading', [h('h3', 'Transactions')]),
+      h("div.panel.panel-default", [
+        h("div.panel-heading", [h("h3", "Transactions")]),
         h(
-          'div.panel-body',
+          "div.panel-body",
           {
             style: {
-              'flex-direction': 'column',
-              display: 'flex',
+              "flex-direction": "column",
+              display: "flex",
             },
           },
           state.transactions.map((txHash) => {
@@ -220,13 +220,13 @@ function renderApp() {
     ]),
 
     state.errorMessage
-      ? h('div.text-center', { style: { color: 'red' } }, state.errorMessage)
+      ? h("div.text-center", { style: { color: "red" } }, state.errorMessage)
       : null,
   ]);
 }
 
 function link(url, content) {
-  return h('a', { href: url, target: '_blank' }, content);
+  return h("a", { href: url, target: "_blank" }, content);
 }
 
 async function getEther() {
@@ -242,10 +242,10 @@ async function getEther() {
 
   try {
     res = await fetch(uri, {
-      method: 'POST',
+      method: "POST",
       body: data,
       headers: {
-        'Content-Type': 'application/rawdata',
+        "Content-Type": "application/rawdata",
       },
     });
     body = await res.text();
@@ -271,7 +271,7 @@ async function getEther() {
 
   // display error-in-body
   try {
-    if (body.slice(0, 2) === '0x') {
+    if (body.slice(0, 2) === "0x") {
       state.transactions.push(body);
       state.errorMessage = null;
     } else {
@@ -293,13 +293,13 @@ async function sendTx(value) {
     {
       from: address,
       to: state.faucetAddress,
-      value: '0x' + (value * 1e18).toString(16),
+      value: "0x" + (value * 1e18).toString(16),
     },
     function (err, txHash) {
       if (err) {
         state.errorMessage = err && err.stack;
       } else {
-        console.log('user sent tx:', txHash);
+        console.log("user sent tx:", txHash);
         state.errorMessage = null;
         state.transactions.push(txHash);
       }
@@ -312,7 +312,7 @@ function render(elements) {
   if (!Array.isArray(elements)) elements = [elements];
   elements = elements.filter(Boolean);
   // clear
-  document.body.innerHTML = '';
+  document.body.innerHTML = "";
   // insert
   elements.forEach(function (element) {
     document.body.appendChild(element);
@@ -320,5 +320,5 @@ function render(elements) {
 }
 
 function formatBalance(balance) {
-  return balance ? balance + ' ether' : '...';
+  return balance ? balance + " ether" : "...";
 }

@@ -1,6 +1,6 @@
 module.exports = {
-  nebula: {
-    rpcOrigin: "https://testnet.rpc.novanetwork.io:9070/",
+  nova: {
+    rpcOrigin: "https://connect.novanetwork.io/",
     privateKey: '0xefg1234....',
   },
 }
