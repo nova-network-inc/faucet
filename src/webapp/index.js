@@ -33,7 +33,7 @@ function startApp() {
     render(
       h(
         'span',
-        'No ethereum provider detected. Install a web-enabled wallet (eg MetaMask metamask.io) to continue'
+        'No ethereum provider detected. Install a web-enabled wallet (eg MetaMask metamask.io) to continue.'
       )
     );
     return;
@@ -140,7 +140,7 @@ function renderApp() {
         h('div.panel.panel-default', [
           h('div.panel-heading', [h('h3', 'Network Error')]),
           h('div.panel-body', [
-            'You are currently connected to the wrong network. Please switch over to Nebula Testnet',
+            'You are currently connected to the wrong network. Please switch over to Nebula Testnet.',
           ]),
         ]),
       ]),
@@ -320,5 +320,5 @@ function render(elements) {
 }
 
 function formatBalance(balance) {
-  return balance ? balance + ' ether' : '...';
+  return balance ? balance + ' NBX' : '...';
 }
