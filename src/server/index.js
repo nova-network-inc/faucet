@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 9000
 
 // log unhandled errors
 process.on("unhandledRejection", (error) => {
@@ -24,7 +24,7 @@ const appPath = path.join(__dirname, "../../", "build");
 
 const min = 60 * 1000;
 const ether = 1e18;
-const faucetAmountWei = 1 * ether;
+const faucetAmountWei = 0.1 * ether;
 const EtherBN = new BN("1000000000000000000", 10);
 const MAX_BALANCE = EtherBN.mul(new BN("4", 10));
 const AUTO_RESTART_INTERVAL = 60 * min;
